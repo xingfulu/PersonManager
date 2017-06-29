@@ -1,0 +1,52 @@
+{extend name='base'/}
+{block name='content'}
+<!--学习计划包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<table class="table table-striped .table-hover">
+<caption class="Myhead1">个人作品</caption>
+<button class="btn btn-success btn-study" onclick="add()">增加作品</button>
+<span class="Todaydate"></span>
+ <thead>
+ 	<tr>
+ 		<th>作品题目</th>
+ 		<th>作品内容</th>
+ 		<th>链接地址</th>
+ 		<th>编辑</th>
+ 		<th>删除</th>
+ 	</tr>
+ </thead>
+ <tbody>
+ {foreach name="field" key="key" item="vo"}
+ 	<tr class="MyShow">
+ 		<td>{$vo['show_head']}</td>
+ 		<td>{$vo['show_content']}</td>
+ 		<td>{$vo['show_address']}</td>
+ 		<td>
+ 			<button class="btn btn-info btn-xs" onclick="update({$vo['show_id']})">编辑</button>
+ 		</td>
+ 		<td>
+ 			<button class="btn btn-danger btn-xs" onclick="del({$vo['show_id']})">删除</button>
+ 		</td>
+ 	</tr>
+ {/foreach}
+ </tbody>
+</table>
+<script type="text/javascript">
+//增加学习任务
+	function add(){
+		location.href = "{:url('add')}";
+	}
+//修改学习任务
+	function update(show_id){	
+     	location.href = "{:url('update')}"+'?show_id='+show_id;  
+	}
+//删除任务
+function del(show_id){	
+		var confireM=confirm('确定删除吗?');
+        if(confireM){
+            location.href = "{:url('del')}"+'?show_id='+show_id;
+        }
+	}
+</script>
+</div>
+{/block}

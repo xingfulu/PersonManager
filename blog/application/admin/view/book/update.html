@@ -1,0 +1,61 @@
+{extend name="base"/}
+{block name="content"}
+<!--更换书目的包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+                <li>
+                    <a href="{:url('book')}"><i class="fa fa-cogs"></i>
+                        读书计划</a>
+                </li>
+                <li class="active">
+                    <a href="{:url('update')}">编辑金融学读书计划</a>
+                </li>
+
+            </ol>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a href="{:url('book')}">读书计划</a></li>
+                <li class="active"><a href="{:url('update')}">编辑金融学任务</a></li>
+            </ul>
+            <form class="form-horizontal" id="form" action="" method="post">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">金融学编辑处</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">书目</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="moneybook_content"  class="form-control" placeholder="" value="{$oldDate['moneybook_content']}">
+                            </div>
+                        </div>    
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">书目图片</label>
+                            <div class="col-sm-9">
+                                <input type="file" id="exampleInputFile" name="moneybook_img" >
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">读完时间</label>
+                            <div class="col-sm-9">
+                                <input type="date" name="moneybook_time"  class="form-control" placeholder="" value="{$oldDate['moneybook_time']}">
+                            </div>
+                        </div>    
+                        <div class="form-group">
+                    <label for=""  class="col-sm-2 control-label">文章内容</label>
+                    <div class="col-sm-9">
+                        <textarea id="container" name="moneybook_show" style="height:300px;width:100%;"
+                        >
+                            
+                        </textarea>
+                        <script>
+                        util.ueditor('container', {hash:2,data:'hd'}, function (editor) {
+                            //这是回调函数 editor是百度编辑器实例
+                        });
+                        </script>
+                    </div>           
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">确定</button>
+            </form>
+</div>
+{/block}

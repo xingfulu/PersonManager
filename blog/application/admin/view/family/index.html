@@ -1,0 +1,68 @@
+{extend name='base'/}
+{block name='content'}
+<!--家庭成员更换处包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+            <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+                <li>
+                    <a href=""><i class="fa fa-cogs"></i>
+                        家庭成员</a>
+                </li>
+                <li class="active">
+                    <a href="">家人基本信息</a>
+                </li>
+            </ol>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="">家属信息列表</a></li>
+                <li><a href="{:url('store')}">添加家庭成员</a></li>
+            </ul>
+            <form action="" method="post">
+                <div class="panel panel-default">
+                    <div class="panel-body edit">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th width="80">编号</th>
+                                <th>姓名</th>
+                                <th>与本人关系</th>
+                                <th>工作单位</th>
+                                <th colspan="2" class="MyControl">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--在此处循环我们数据库中的数据,数据库中有多少条数据，就会循环出来多少条数据-->
+                            <!--key为循环中的键名，vo为循环中的键值，name指定我们要循环的数据，和Family控制器中的名相对应-->
+                            {foreach name="field" key="key" item="vo"}
+                                <tr>
+                                    <td>{$vo['famlily_id']}</td>
+                                    <td>{$vo['famlily_name']}</td>
+                                    <td>{$vo['famlily_relation']}</td>
+                                    <td>{$vo['famlily_job']}</td>
+                                    <td>
+                                            <button class="btn btn-primary btn-xs ">
+                                                <a href="{:url('edit',['famlily_id'=>$vo['famlily_id']])}">编辑</a>
+                                            </button>
+                                    </td>  
+                                    <td>
+                                        <button  class="btn btn-primary btn-xs ">
+                                            <a href="javascript:;" onclick="del({$vo['famlily_id']})">删除</a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <div class="pagination pagination-sm pull-right">
+            </div>
+</div>
+<script>
+    function del(famlily_id) {
+        var confireM=confirm('确定删除吗?');
+        if(confireM){
+            location.href = "{:url('del')}"+'?famlily_id='+famlily_id;
+        }
+    }
+</script>
+{/block}

@@ -1,0 +1,38 @@
+{extend name="base"/}
+{block name="content"}
+<!--修改早餐包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+                <li>
+                    <a href="{:url('eat')}"><i class="fa fa-cogs"></i>
+                        饮食计划</a>
+                </li>
+                <li class="active">
+                    <a href="{:url('update2')}">编辑晚餐</a>
+                </li>
+
+            </ol>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a href="{:url('eat')}">饮食计划</a></li>
+                <li class="active"><a href="{:url('update2')}">编辑饮食任务</a></li>
+            </ul>
+            <form class="form-horizontal" id="form" action="" method="post">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">晚餐编辑处</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">晚餐</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="dinner_food"  class="form-control" placeholder="" value="{$oldDate['dinner_food']}">
+                                <!---->
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">确定</button>
+            </form>
+        <!--右侧主题部分 end-->
+</div>
+{/block}

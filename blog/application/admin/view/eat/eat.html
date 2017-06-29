@@ -1,0 +1,42 @@
+{extend name="base"/}
+{block name="content"}
+<!--增加饮食健康包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<span class="Todaydate Todaydate1"></span>
+<div class="breakfast">
+{foreach name="field" key="key" item="vo"}
+	<button class="btn btn-warning btn-xs" onclick="update({$vo['breakfast_id']})">更改菜单</button>
+	<h1>早餐</h1>
+	<p>{$vo['breakfast_food']}</p>
+{/foreach}
+</div>
+<div class="lunch">
+{foreach name="field1" key="key" item="vo"}
+<button class="btn btn-active btn-info" onclick="update1({$vo['lunch_id']})">更改菜单</button>
+	<h1>午餐</h1>
+	<p>{$vo['lunch_food']}</p>
+{/foreach}
+</div>
+<div class="dinner">
+{foreach name="field2" key="key" item="vo"}
+<button class="btn btn-active btn-primary" onclick="update2({$vo['dinner_id']})">更改菜单</button>
+	<h1>晚餐</h1>
+	<p>{$vo['dinner_food']}</p>
+{/foreach}
+</div>
+</div>
+<script type="text/javascript">
+	//修改早餐
+	function update(breakfast_id){	
+     	location.href = "{:url('update')}"+'?breakfast_id='+breakfast_id;  
+	}
+	//修改午餐
+	function update1(lunch_id){	
+     	location.href = "{:url('update1')}"+'?lunch_id='+lunch_id;  
+	}
+	//修改晚餐
+	function update2(dinner_id){	
+     	location.href = "{:url('update2')}"+'?dinner_id='+dinner_id;  
+	}
+</script>
+{/block}

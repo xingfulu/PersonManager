@@ -1,0 +1,102 @@
+{extend name="base"/}
+{block name="content"}
+<!--读书计划包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<table class="table MyTable table-bordered ">
+ <tr>
+ 	<td >
+ 	{foreach name="field" key="key" item="vo"}
+ 		<div class="classicbook">
+ 		<p>金</p>
+ 		<p>融</p>
+ 		<p>类</p>
+ 		</div>
+ 		<div class="bookContent">
+ 		<p>书目</p>
+ 		<span>{$vo['moneybook_content']}</span>
+ 		</div>
+ 		<div class="bookPic">
+ 			<img src="../../static/admin/img/{$vo['moneybook_img']}" width="180px"
+ 			height="175px">
+ 			<div class="showContent">
+ 			{$vo['moneybook_show']}
+ 			</div>
+ 		</div>
+ 		
+ 		<div class="bookTime">
+ 		<p>读完时间</p>
+ 		<span>{$vo['moneybook_time']}</span>
+ 		</div>
+ 		<button class="btn btn-info btn-xs MyBtnn1" onclick="update({$vo['moneybook_id']})">更换书目</button>
+ 		{/foreach}
+ 	</td>
+ </tr>
+ <tr>
+ 	<td >
+ 		{foreach name="field1" key="key" item="vo"}
+ 		<div class="classicbook">
+ 		<p>软</p>
+ 		<p>件</p>
+ 		<p>类</p>
+ 		</div>
+ 		<div class="bookContent">
+ 		<p>书目</p>
+ 		<span>{$vo['internet_content']}</span>
+ 		</div>
+ 		<div class="bookPic">
+ 			<img src="../../static/admin/img/{$vo['internet_img']}" width="180px"
+ 			height="175px">
+ 			<div class="showContent">
+ 			{$vo['internet_show']}
+ 			</div>
+ 		</div>
+ 		<div class="bookTime">
+ 		<p>读完时间</p>
+ 		<span>{$vo['internet_time']}</span>
+ 		</div>
+ 		<button class="btn btn-info btn-xs MyBtnn1" onclick="update1({$vo['internet_id']})">更换书目</button>
+ 		{/foreach}
+ 	</td>
+ </tr>
+ <tr>
+ 	<td>
+ 		{foreach name="field2" key="key" item="vo"}
+ 		<div class="classicbook">
+ 		<p>提</p>
+ 		<p>升</p>
+ 		<p>类</p>
+ 		</div>
+ 		<div class="bookContent">
+ 		<p>书目</p>
+ 		<span>{$vo['up_content']}</span>
+ 		</div>
+ 		<div class="bookPic">
+ 			<img src="../../static/admin/img/{$vo['up_img']}" width="180px"
+ 			height="175px">
+ 			<div class="showContent">
+ 			{$vo['up_show']}
+ 			</div>
+ 		</div>
+ 		<div class="bookTime">
+ 		<p>读完时间</p>
+ 		<span>{$vo['up_time']}</span>
+ 		</div>
+ 		<button class="btn btn-info btn-xs MyBtnn1" onclick="update2({$vo['up_id']})">更换书目</button>
+ 		{/foreach}
+ 	</td>
+ </tr>
+</table>
+<script type="text/javascript">
+	//更改书目
+	function update(moneybook_id){
+		location.href = "{:url('update')}"+'?moneybook_id='+moneybook_id; 
+	}
+	function update1(internet_id){
+		location.href = "{:url('update1')}"+'?internet_id='+internet_id; 
+	}
+	function update2(up_id){
+		location.href = "{:url('update2')}"+'?up_id='+up_id; 
+	}
+</script>
+</div>
+{/block}

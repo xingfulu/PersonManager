@@ -1,0 +1,60 @@
+{extend name="base"/}
+{block name="content"}
+<!--文章列表包裹处-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+    <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+        <li>
+            <a href=""><i class="fa fa-cogs"></i>
+                文章管理</a>
+        </li>
+        <li class="active">
+            <a href="{:url('store')}">文章添加</a>
+        </li>
+    </ol>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#tab1">文章管理</a></li>
+        <li><a href="{:url('store')}">文章添加</a></li>
+    </ul>
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="5%">编号</th>
+                        <th>文章名称</th>
+                        <th>文章链接</th>
+                        <th>添加时间</th>
+                        <th>编辑</th>
+                        <th>删除到回收站</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="field" key="key" item="vo"}
+                    <tr>
+                        <td>{$vo['arc_id']}</td>
+                        <td>{$vo['arc_title']}</td>
+                        <td>{$vo['arc_address']}</td>
+                        <td>{$vo['sendtime']}</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs ">
+                                <a href="{:url('edit',['arc_id'=>$vo['arc_id']])}">编辑</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-xs ">
+                                <a href="{:url('delToRecycle',['arc_id'=>$vo['arc_id']])}">删除到回收站</a>
+                            </button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <div class="pagination pagination-sm pull-right">
+
+    </div>
+</div>
+{/block}

@@ -1,0 +1,56 @@
+{extend name="base"/}
+{block name="content"}
+<!--更换书目的包裹-->
+<div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 WrapperWhole">
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+                <li>
+                    <a href="{:url('note')}"><i class="fa fa-cogs"></i>
+                        记事本</a>
+                </li>
+                <li class="active">
+                    <a href="{:url('add')}">记录点滴</a>
+                </li>
+
+            </ol>
+            <ul class="nav nav-tabs" role="tablist">
+                <li><a href="{:url('note')}">记事本</a></li>
+                <li class="add"><a href="{:url('update')}">记录点滴</a></li>
+            </ul>
+            <form class="form-horizontal" id="form" action="" method="post">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">记录点滴</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">应景图片</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="note_pic" >
+                            </div>
+                        </div>    
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">记事本题目</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="exampleInputFile" name="note_head" class="form-control">
+                            </div>
+                        </div>   
+             
+                    <div class="form-group">
+                    <label for=""  class="col-sm-2 control-label">记录内容</label>
+                    <div class="col-sm-9">
+                        <textarea id="container" name="note_content" style="height:300px;width:100%;"
+                        >
+                            
+                        </textarea>
+                        <script>
+                        util.ueditor('container', {hash:2,data:'hd'}, function (editor) {
+                            //这是回调函数 editor是百度编辑器实例
+                        });
+                        </script>
+                    </div>           
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">确定</button>
+            </form>
+</div>
+{/block}
